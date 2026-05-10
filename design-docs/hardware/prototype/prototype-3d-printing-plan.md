@@ -31,12 +31,12 @@ This document outlines the engineering plan for fabricating the prototype chassi
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | Baseplate | Main foundation | Print | Custom CAD required | Open | PETG | 25% | 4 | Flat | M3 inserts | Heavy and rigid |
 | Optical Tower | Z-axis support | Print | [OpenFlexure v7 Base](https://openflexure.org/projects/microscope/build) | CERN OHL | Black PETG | 40% | 5 | Vertical | M3 screws | Use as reference design |
-| Camera Mount | Holds IMX296 | Print | [Raspberry Pi HQ Mount](TODO: verify link) | CC BY | PETG | 30% | 4 | Flat | M2.5 screws | Modify for IMX296 hole spacing |
-| Objective Holder| Holds RMS lens | Print | [RMS to C-mount adapter](TODO: verify link) | CC BY | Black PETG | 50% | 5 | Flat | None | Thread tolerances are critical. May need 0.12mm layers |
+| Camera Mount | Holds IMX296 | Print | [Raspberry Pi HQ Mount](https://www.thingiverse.com/thing:4357597) | CC BY | PETG | 30% | 4 | Flat | M2.5 screws | Modify for IMX296 hole spacing |
+| Objective Holder| Holds RMS lens | Print | [RMS to C-mount adapter](https://www.thingiverse.com/thing:2988173) | CC BY | Black PETG | 50% | 5 | Flat | None | Thread tolerances are critical. May need 0.12mm layers |
 | XY Carriage | Moves sample | Print | Custom CAD required | Open | PLA/PETG | 30% | 4 | Flat | MGN12 blocks | Must mount to linear rails |
 | Rail Holders | Secures MGN12 | Print | Custom CAD required | Open | PETG | 40% | 4 | Flat | M3 screws | |
 | Lead Nut Mount | Drives XY | Print | Custom CAD required | Open | PETG | 30% | 4 | Flat | Anti-backlash nut | |
-| Pi Case/Mount | Holds RPi | Print | [RPi 4 Snap-fit Case](TODO: verify link) | CC BY-NC | PLA | 20% | 3 | Flat | None | |
+| Pi Case/Mount | Holds RPi | Print | [RPi 4 Snap-fit Case](https://www.printables.com/model/4074-raspberry-pi-4-snap-fit-case) | CC BY-NC | PLA | 20% | 3 | Flat | None | |
 
 ## 7. Parts Not Suitable for Printing
 - Precision linear rails (MGN12).
@@ -47,8 +47,10 @@ This document outlines the engineering plan for fabricating the prototype chassi
 
 ## 8. Downloadable STL/CAD Options
 We leverage open-source designs where possible:
-- **OpenFlexure Microscope**: Excellent reference for 3D printed flexure mechanisms if we decide to avoid linear rails for the Z-axis.
-- **UC2 Modular Microscopy**: Great reference for magnetic, modular optical cubes.
+- **OpenFlexure Microscope**: Excellent reference for 3D printed flexure mechanisms if we decide to avoid linear rails for the Z-axis. [View Project](https://openflexure.org/)
+  <br><img src="../../assets/images/hardware/prototype/openflexure_microscope.png" width="300"/>
+- **UC2 Modular Microscopy**: Great reference for magnetic, modular optical cubes. [View GitHub](https://github.com/openUC2/UC2-GIT)
+  <br><img src="../../assets/images/hardware/prototype/uc2_modular.png" width="300"/>
 
 ## 9. Tolerance and Fit Guidance
 - Add **0.2 mm to 0.4 mm** clearance to CAD dimensions for printed fits (e.g., a peg going into a hole).
