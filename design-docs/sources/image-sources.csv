@@ -1,4 +1,4 @@
 image_name,used_in_doc,source_type,source_url,license,attribution,local_path,date_added,notes
-"raspberry_pi_4.jpg","prototype-product-list.md","Vendor Image","https://www.raspberrypi.com/products/raspberry-pi-4-model-b/","Copyrighted (Raspberry Pi Ltd)","Raspberry Pi Ltd","assets/images/hardware/prototype/raspberry_pi_4.jpg","2026-05-10","Placeholder only, do not commit"
-"imx296_module.jpg","prototype-product-list.md","Vendor Image","https://www.inno-maker.com","Copyrighted (InnovaMaker)","InnovaMaker","assets/images/hardware/prototype/imx296_module.jpg","2026-05-10","Placeholder only, do not commit"
-"mgn12_rail.jpg","prototype-product-list.md","Vendor Image","https://kb-3d.com/","Copyrighted","Vendor","assets/images/hardware/prototype/mgn12_rail.jpg","2026-05-10","Placeholder only, do not commit"
+"raspberry_pi_4.jpg","prototype-product-list.md","Vendor Image","https://upload.wikimedia.org/wikipedia/commons/f/f1/Raspberry_Pi_4_Model_B_-_Side.jpg","CC BY-SA 4.0","Wikimedia Commons","assets/images/hardware/prototype/raspberry_pi_4.jpg","2026-05-10",""
+"imx296_module.jpg","prototype-product-list.md","Vendor Image","https://www.waveshare.com","Copyrighted","Waveshare","assets/images/hardware/prototype/imx296_module.jpg","2026-05-10",""
+"mgn12_rail.png","prototype-product-list.md","AI Generated","Local Generation","Public Domain","AI Generated","assets/images/hardware/prototype/mgn12_rail.png","2026-05-10",""

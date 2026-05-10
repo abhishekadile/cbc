@@ -4,9 +4,9 @@ This document manages the visual assets, diagrams, and CAD renders used in the p
 
 ## Image Management Rules
 
-1. **Do NOT commit copyrighted images directly to the repository** unless the license explicitly allows it (e.g., CC0, CC BY, public domain).
-2. Use web research to find vendor links and use those as references in the documentation (e.g., link to the Amazon product page instead of downloading and committing their photo).
-3. **Prefer self-created diagrams**: Use Mermaid.js within Markdown for system diagrams, flowcharts, and architecture maps. These render natively on GitHub and have zero copyright issues.
+1. **Vendor Images**: It is acceptable to download and commit product images found via web search to ensure the documentation remains complete even if external links die. 
+2. **Local Storage**: Always download images and place them in the appropriate `assets/` directory rather than hotlinking them.
+3. **Prefer self-created diagrams**: Use Mermaid.js within Markdown for system diagrams, flowcharts, and architecture maps. These render natively on GitHub.
 4. **CAD Screenshots**: Screenshots of your own CAD models are encouraged. Use `.png` format.
 5. **Image Inventory**: Every image saved in the repository must be tracked in the `design-docs/sources/image-sources.csv` file.
 
