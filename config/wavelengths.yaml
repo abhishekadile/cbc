@@ -1,0 +1,22 @@
+# Define the wavelengths used for multispectral imaging
+channels:
+  - id: "white"
+    name: "White Light"
+    simulated: true
+    exposure_multiplier: 1.0
+  - id: "405nm"
+    name: "405 nm (Violet)"
+    simulated: true
+    exposure_multiplier: 1.5
+  - id: "530nm"
+    name: "530 nm (Green)"
+    simulated: true
+    exposure_multiplier: 1.2
+  - id: "660nm"
+    name: "660 nm (Red)"
+    simulated: true
+    exposure_multiplier: 1.0
+  - id: "850nm"
+    name: "850 nm (NIR)"
+    simulated: true
+    exposure_multiplier: 2.0

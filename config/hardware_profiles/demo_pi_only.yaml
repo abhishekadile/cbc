@@ -1,0 +1,14 @@
+# Profile: Demo mode using Raspberry Pi only
+name: "demo_pi_only"
+description: "Raspberry Pi direct control. Mocked hardware stages."
+components:
+  camera:
+    type: "imx296_picamera2" # Will fallback to mock if allow_mock_fallback is true
+    config_file: "config/camera_imx296.yaml"
+  stage:
+    type: "mock"
+  lights:
+    type: "mock"
+  autofocus:
+    type: "mock"
+trigger_mode: "software"

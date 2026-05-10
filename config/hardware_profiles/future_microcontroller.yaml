@@ -1,0 +1,16 @@
+# Profile: Future Microcontroller Sync
+name: "future_microcontroller"
+description: "Uses a serial-connected microcontroller for timing, XY stage, and lighting."
+components:
+  camera:
+    type: "imx296_picamera2"
+    config_file: "config/camera_imx296.yaml"
+  stage:
+    type: "serial_microcontroller"
+    port: "/dev/ttyACM0"
+    baudrate: 115200
+  lights:
+    type: "serial_microcontroller"
+  autofocus:
+    type: "serial_microcontroller"
+trigger_mode: "external"

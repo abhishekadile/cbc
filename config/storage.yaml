@@ -1,0 +1,7 @@
+# Storage Config
+base_dir: "data"
+scans_dir: "scans"
+logs_dir: "logs"
+format: "png"
+thumbnail_size: 256
+keep_raw: true

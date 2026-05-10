@@ -1,0 +1,5 @@
+# General Scanner Config
+system_name: "Multispectral CBC Image Acquisition System"
+version: "0.1.0"
+mode: "prototype"
+default_profile: "demo_pi_only"

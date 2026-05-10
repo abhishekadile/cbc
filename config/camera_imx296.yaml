@@ -1,0 +1,11 @@
+# Camera configuration for IMX296
+sensor_type: "IMX296"
+interface: "MIPI CSI"
+shutter_type: "Global"
+resolution:
+  width: 1440
+  height: 1080
+default_exposure_us: 10000
+default_gain: 1.0
+pixel_format: "RAW10"
+allow_mock_fallback: true
