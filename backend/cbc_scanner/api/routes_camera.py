@@ -1,19 +1,25 @@
 from fastapi import APIRouter
-from pydantic import BaseModel
+from typing import Dict, Any
 import logging
 
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api/camera", tags=["camera"])
 
-class CameraTestResponse(BaseModel):
-    success: bool
-    message: str
-
-@router.post("/test", response_model=CameraTestResponse)
-def test_camera():
+@router.post("/test")
+def test_camera() -> Dict[str, Any]:
     from cbc_scanner.hardware.device_status import get_camera_instance
     cam = get_camera_instance()
     success = cam.test()
+    status = cam.get_status()
+    
     if success:
-        return {"success": True, "message": "Camera test passed."}
-    return {"success": False, "message": "Camera test failed."}
+        return {
+            "ok": True,
+            "camera": status
+        }
+    else:
+        return {
+            "ok": False,
+            "error": status.get("last_error", "Unknown error"),
+            "camera": status
+        }

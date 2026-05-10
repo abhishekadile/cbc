@@ -10,14 +10,12 @@ class CaptureResponse(BaseModel):
     message: str
     scan_id: str = None
 
-@router.post("/single", response_model=CaptureResponse)
+@router.post("/single")
 def capture_single(background_tasks: BackgroundTasks):
     from cbc_scanner.acquisition.scan_runner import run_single_capture
-    scan_id = run_single_capture()
-    return {"success": True, "message": "Capture initiated.", "scan_id": scan_id}
+    return run_single_capture()
 
-@router.post("/demo-multispectral", response_model=CaptureResponse)
+@router.post("/demo-multispectral")
 def capture_demo_multispectral(background_tasks: BackgroundTasks):
     from cbc_scanner.acquisition.scan_runner import run_demo_multispectral
-    scan_id = run_demo_multispectral()
-    return {"success": True, "message": "Demo multispectral capture initiated.", "scan_id": scan_id}
+    return run_demo_multispectral()

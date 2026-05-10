@@ -3,3 +3,12 @@ system_name: "Multispectral CBC Image Acquisition System"
 version: "0.1.0"
 mode: "prototype"
 default_profile: "demo_pi_only"
+
+camera:
+  mode: "auto"   # options: auto, real, mock
+  model: "imx296"
+  resolution: [1456, 1088]
+  exposure_us: 5000
+  gain: 1.0
+  mock_fallback: true
+  save_format: "jpg"

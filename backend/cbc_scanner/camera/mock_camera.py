@@ -39,7 +39,8 @@ class MockCamera(BaseCamera):
 
     def get_status(self) -> dict:
         return {
-            "type": "Mock",
+            "model": "Mock Camera",
+            "source": "mock",
             "connected": self.is_connected,
             "simulated": True
         }

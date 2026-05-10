@@ -27,3 +27,19 @@ def get_scan_image(scan_id: str, filename: str):
     if not path or not os.path.exists(path):
         raise HTTPException(status_code=404, detail="Image not found")
     return FileResponse(path)
+
+@router.get("/{scan_id}/thumbnails/{filename}")
+def get_scan_thumbnail(scan_id: str, filename: str):
+    from cbc_scanner.storage.scan_storage import get_thumbnail_path
+    path = get_thumbnail_path(scan_id, filename)
+    if not path or not os.path.exists(path):
+        raise HTTPException(status_code=404, detail="Thumbnail not found")
+    return FileResponse(path)
+
+@router.get("/{scan_id}/manifest")
+def get_scan_manifest_file(scan_id: str):
+    from cbc_scanner.storage.scan_storage import find_manifest
+    path = find_manifest(scan_id)
+    if not path or not os.path.exists(path):
+        raise HTTPException(status_code=404, detail="Manifest not found")
+    return FileResponse(path)

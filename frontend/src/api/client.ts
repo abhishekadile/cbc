@@ -46,3 +46,12 @@ export const fetchScans = async () => {
   const data = await res.json();
   return Array.isArray(data) ? data : [];
 };
+
+export const fetchScan = async (scanId: string) => {
+  const res = await fetch(`${API_BASE}/scans/${scanId}`);
+  if (!res.ok) {
+    console.error(`Failed to fetch scan detail: ${res.status} ${res.statusText}`);
+    return null;
+  }
+  return res.json();
+};

@@ -88,7 +88,18 @@ def get_image_path(scan_id: str, filename: str) -> str:
     base_dir = get_storage_base()
     for root, dirs, files in os.walk(base_dir):
         if scan_id in dirs:
+            # security path traversal check
+            if ".." in filename: return None
             return os.path.join(root, scan_id, "raw", filename)
+    return None
+
+def get_thumbnail_path(scan_id: str, filename: str) -> str:
+    base_dir = get_storage_base()
+    for root, dirs, files in os.walk(base_dir):
+        if scan_id in dirs:
+            # security path traversal check
+            if ".." in filename: return None
+            return os.path.join(root, scan_id, "thumbnails", filename)
     return None
 
 def save_image(filepath: str, image_data):

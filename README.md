@@ -37,6 +37,13 @@ Follow these exact steps to set up the software on a fresh Raspberry Pi.
    sudo reboot
    ```
 
+### 2. Verify Hardware with Libcamera
+After rebooting, test that the system recognizes the camera and the driver is loaded using the standard Raspberry Pi tools:
+```bash
+rpicam-hello -t 5000
+rpicam-still -o test.jpg
+```
+
 ### 2. Software Installation
 Once the Pi has rebooted, open a terminal (or SSH into it) and run the one-line bootstrap script. This script will install Git, curl, uv (Python dependency manager), clone this repository, and install all required system and frontend dependencies.
 
@@ -62,7 +69,16 @@ cd ~/cbc-scanner
 bash scripts/run_ui.sh
 ```
 Once running, open a web browser on your laptop or Pi and navigate to:
-**`http://raspberrypi.local:8000`** (or use the Pi's actual IP address).
+**`http://localhost:8000`** (or use the Pi's actual IP address).
+
+### Testing the REST API
+You can verify the backend is running properly via the terminal:
+```bash
+curl http://localhost:8000/api/devices/status
+curl -X POST http://localhost:8000/api/camera/test
+curl -X POST http://localhost:8000/api/capture/single
+curl http://localhost:8000/api/scans
+```
 
 ### Running as a Background Service (Auto-start on Boot)
 If you want the software to run automatically every time the Pi turns on:

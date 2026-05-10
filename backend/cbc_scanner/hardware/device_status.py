@@ -13,16 +13,27 @@ def get_camera_instance():
         return _camera_instance
 
     config = get_config()
-    allow_mock = config.get("scanner", {}).get("camera_mock", True)
+    cam_config = config.get("scanner", {}).get("camera", {})
+    mode = cam_config.get("mode", "auto")
+    allow_mock = cam_config.get("mock_fallback", True)
     
+    if mode == "mock":
+        logger.info("Camera mode set to 'mock'. Using MockCamera.")
+        _camera_instance = MockCamera()
+        _camera_instance.start()
+        return _camera_instance
+        
     _camera_instance = IMX296PiCamera2()
     _camera_instance.start()
     
-    if not _camera_instance.is_connected and allow_mock:
-        logger.warning("Falling back to MockCamera")
-        _camera_instance = MockCamera()
-        _camera_instance.start()
-        
+    if not _camera_instance.started:
+        if allow_mock and mode == "auto":
+            logger.warning("Falling back to MockCamera")
+            _camera_instance = MockCamera()
+            _camera_instance.start()
+        else:
+            logger.error("Failed to start IMX296PiCamera2 and mock fallback is disabled/not applicable.")
+            
     return _camera_instance
 
 def get_all_device_statuses():
