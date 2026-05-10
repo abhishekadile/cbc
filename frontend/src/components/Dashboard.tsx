@@ -3,6 +3,21 @@ import { Camera, HardDrive, Cpu, Activity, Play, Zap, CheckCircle2, AlertCircle 
 import { fetchDeviceStatus, triggerDemoScan, fetchScans, fetchHealth } from '../api/client';
 import { motion } from 'framer-motion';
 
+interface DeviceStatus {
+  connected: boolean
+  simulated: boolean
+  detail?: string
+}
+
+interface SystemStatus {
+  camera: DeviceStatus
+  xy_stage: DeviceStatus
+  z_focus?: DeviceStatus
+  lights: DeviceStatus
+  storage: DeviceStatus
+  network?: DeviceStatus
+}
+
 interface ScanImage {
   filename: string
   wavelength_nm?: number
@@ -22,7 +37,7 @@ const StatusBadge = ({ connected, simulated }: { connected: boolean, simulated: 
 };
 
 const Dashboard = () => {
-  const [status, setStatus] = useState<any>(null);
+  const [status, setStatus] = useState<SystemStatus | null>(null);
   const [scans, setScans] = useState<ScanSession[]>([]);
   const [isScanning, setIsScanning] = useState(false);
 
