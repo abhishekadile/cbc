@@ -3,7 +3,19 @@ import { Camera, HardDrive, Cpu, Activity, Play, Zap, CheckCircle2, AlertCircle 
 import { fetchDeviceStatus, triggerDemoScan, fetchScans, fetchHealth } from '../api/client';
 import { motion } from 'framer-motion';
 
-const StatusBadge = ({ connected, simulated }) => {
+interface ScanImage {
+  filename: string
+  wavelength_nm?: number
+  capture_id?: number
+}
+
+interface ScanSession {
+  scan_id: string
+  created_at: string
+  images: ScanImage[]
+}
+
+const StatusBadge = ({ connected, simulated }: { connected: boolean, simulated: boolean }) => {
   if (!connected) return <span className="flex items-center text-red-400 text-xs"><AlertCircle className="w-3 h-3 mr-1"/> Offline</span>;
   if (simulated) return <span className="flex items-center text-yellow-500 text-xs"><Zap className="w-3 h-3 mr-1"/> Simulated</span>;
   return <span className="flex items-center text-green-400 text-xs"><CheckCircle2 className="w-3 h-3 mr-1"/> Online</span>;
@@ -11,7 +23,7 @@ const StatusBadge = ({ connected, simulated }) => {
 
 const Dashboard = () => {
   const [status, setStatus] = useState<any>(null);
-  const [scans, setScans] = useState<any[]>([]);
+  const [scans, setScans] = useState<ScanSession[]>([]);
   const [isScanning, setIsScanning] = useState(false);
 
   useEffect(() => {
