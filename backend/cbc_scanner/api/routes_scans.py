@@ -6,9 +6,13 @@ from cbc_scanner.storage.scan_storage import list_scans, get_scan_manifest, get_
 
 router = APIRouter(prefix="/api/scans", tags=["scans"])
 
+@router.get("")
 @router.get("/")
 def get_scans():
-    return list_scans()
+    scans = list_scans()
+    if isinstance(scans, list):
+        return scans
+    return []
 
 @router.get("/{scan_id}")
 def get_scan(scan_id: str):

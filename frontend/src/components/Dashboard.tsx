@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Camera, HardDrive, Cpu, Activity, Play, Zap, CheckCircle2, AlertCircle } from 'lucide-react';
-import { fetchDeviceStatus, triggerDemoScan, fetchScans, fetchHealth } from '../api/client';
+import { fetchDeviceStatus, triggerDemoScan, fetchScans } from '../api/client';
 import { motion } from 'framer-motion';
 
 interface DeviceStatus {
@@ -49,7 +49,7 @@ const Dashboard = () => {
           fetchScans()
         ]);
         setStatus(devStatus);
-        setScans(scansData);
+        setScans(Array.isArray(scansData) ? scansData : []);
       } catch (err) {
         console.error("Failed to load data", err);
       }
@@ -65,7 +65,7 @@ const Dashboard = () => {
       await triggerDemoScan();
       setTimeout(async () => {
         const scansData = await fetchScans();
-        setScans(scansData);
+        setScans(Array.isArray(scansData) ? scansData : []);
         setIsScanning(false);
       }, 3500); // Wait for demo scan to complete
     } catch (err) {
@@ -170,7 +170,7 @@ const Dashboard = () => {
                 <div key={scan.scan_id} className="bg-card border border-border rounded-xl p-4 shadow-sm hover:border-blue-500/50 transition-colors cursor-pointer group">
                   <div className="flex justify-between items-start mb-3">
                     <span className="text-xs font-mono text-muted-foreground">{scan.scan_id.split('_')[1]}</span>
-                    <span className="text-[10px] uppercase px-2 py-1 bg-secondary rounded-full">{scan.images.length} layers</span>
+                    <span className="text-[10px] uppercase px-2 py-1 bg-secondary rounded-full">{Array.isArray(scan.images) ? scan.images.length : 0} layers</span>
                   </div>
                   <h4 className="font-medium text-sm truncate mb-1">{scan.scan_id}</h4>
                   <p className="text-xs text-muted-foreground">{new Date(scan.created_at).toLocaleString()}</p>
