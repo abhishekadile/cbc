@@ -27,16 +27,16 @@ This document outlines the engineering plan for fabricating the prototype chassi
 
 ## 6. Printable Parts Breakdown
 
-| Part | Function | Print or Buy? | Existing STL/CAD Link | License | Material | Infill | Walls | Orientation | Hardware Needed | Notes |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| Baseplate | Main foundation | Print | Custom CAD required | Open | PETG | 25% | 4 | Flat | M3 inserts | Heavy and rigid |
-| Optical Tower | Z-axis support | Print | [OpenFlexure v7 Base](https://openflexure.org/projects/microscope/build) | CERN OHL | Black PETG | 40% | 5 | Vertical | M3 screws | Use as reference design |
-| Camera Mount | Holds IMX296 | Print | [Raspberry Pi HQ Mount](https://www.thingiverse.com/thing:4357597) | CC BY | PETG | 30% | 4 | Flat | M2.5 screws | Modify for IMX296 hole spacing |
-| Objective Holder| Holds RMS lens | Print | [RMS to C-mount adapter](https://www.thingiverse.com/thing:2988173) | CC BY | Black PETG | 50% | 5 | Flat | None | Thread tolerances are critical. May need 0.12mm layers |
-| XY Carriage | Moves sample | Print | Custom CAD required | Open | PLA/PETG | 30% | 4 | Flat | MGN12 blocks | Must mount to linear rails |
-| Rail Holders | Secures MGN12 | Print | Custom CAD required | Open | PETG | 40% | 4 | Flat | M3 screws | |
-| Lead Nut Mount | Drives XY | Print | Custom CAD required | Open | PETG | 30% | 4 | Flat | Anti-backlash nut | |
-| Pi Case/Mount | Holds RPi | Print | [RPi 4 Snap-fit Case](https://www.printables.com/model/4074-raspberry-pi-4-snap-fit-case) | CC BY-NC | PLA | 20% | 3 | Flat | None | |
+| Part | Preview | STL/CAD Link | Material & Print Settings | Orientation | Notes |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| Baseplate | <img src="../../assets/images/hardware/prototype/3d_baseplate.png" width="80"/> | Custom CAD required | PETG, 25% infill, 4 walls | Flat | **Main foundation**. Heavy and rigid. Hardware: M3 inserts |
+| Optical Tower | <img src="../../assets/images/hardware/prototype/openflexure_microscope.png" width="80"/> | [OpenFlexure v7 Base](https://openflexure.org/projects/microscope/build) | Black PETG, 40% infill, 5 walls | Vertical | **Z-axis support**. Use as reference design. Hardware: M3 screws |
+| Camera Mount | <img src="../../assets/images/hardware/prototype/3d_camera_mount.png" width="80"/> | [Raspberry Pi HQ Mount](https://www.thingiverse.com/thing:4357597) | PETG, 30% infill, 4 walls | Flat | **Holds IMX296**. Modify for IMX296 hole spacing. Hardware: M2.5 screws |
+| Objective Holder | <img src="../../assets/images/hardware/prototype/3d_objective_holder.png" width="80"/> | [RMS to C-mount adapter](https://www.thingiverse.com/thing:2988173) | Black PETG, 50% infill, 5 walls | Flat | **Holds RMS lens**. Thread tolerances are critical. May need 0.12mm layers. Hardware: None |
+| XY Carriage | <img src="../../assets/images/hardware/prototype/3d_xy_carriage.png" width="80"/> | Custom CAD required | PLA/PETG, 30% infill, 4 walls | Flat | **Moves sample**. Must mount to linear rails. Hardware: MGN12 blocks |
+| Rail Holders | <img src="../../assets/images/hardware/prototype/3d_rail_holder.png" width="80"/> | Custom CAD required | PETG, 40% infill, 4 walls | Flat | **Secures MGN12**. . Hardware: M3 screws |
+| Lead Nut Mount | <img src="../../assets/images/hardware/prototype/3d_objective_holder.png" width="80"/> | Custom CAD required | PETG, 30% infill, 4 walls | Flat | **Drives XY**. . Hardware: Anti-backlash nut |
+| Pi Case/Mount | <img src="../../assets/images/hardware/prototype/3d_pi_case.png" width="80"/> | [RPi 4 Snap-fit Case](https://www.printables.com/model/4074-raspberry-pi-4-snap-fit-case) | PLA, 20% infill, 3 walls | Flat | **Holds RPi**. . Hardware: None |
 
 ## 7. Parts Not Suitable for Printing
 - Precision linear rails (MGN12).
