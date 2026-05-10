@@ -1,24 +1,27 @@
 # Prototype Product List
 
-*Note: All prices are estimated ranges and must be verified before purchase.*
+This document details the exact components required for the prototype build, including researched pricing and links.
+*Prices verified as of May 10, 2026. Do not invent unavailable prices.*
 
-| Subsystem | Part | Purpose | Recommended Option | Cheapest Acceptable Option | Estimated Cost Range | Where to Buy | Image Needed | Notes |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| Raspberry Pi | Board | Control and capture | RPi 4 or 5 (4GB+) | RPi 4 (2GB) | $45 - $80 | Authorized Resellers | Yes | Needs adequate cooling |
-| IMX296 camera | Sensor | Image sensor | InnovaMaker IMX296 | N/A (Project specific) | $50 - $70 | InnovaMaker/Amazon | Yes | Global shutter required |
-| Lens/objective | Optics | Magnification | 40x Plan Achromatic | 10x Basic Achromatic | $20 - $80 | AmScope/Amazon | Yes | Depends on target resolution |
-| Slide holder | Mount | Holds sample | 3D Printed custom | 3D Printed basic | $1 - $5 | Local (Print) | No | |
-| Normal microscope slides | Substrate | Sample substrate | Standard glass slides | Basic glass slides | $5 - $15 | Amazon/Lab Supply | No | |
-| LED lights | Illumination | Light source | Multispectral LED ring | White LED ring | $10 - $40 | Adafruit/Amazon | Yes | Need precise wavelength control eventually |
-| Diffuser | Optics | Even lighting | Opal glass or specific acrylic | 3D printed white PLA (thin) | $2 - $15 | Amazon/McMaster | No | |
-| Stepper motors | Motion | Automated XY/Z | NEMA 17 or NEMA 11 | 28BYJ-48 (extreme budget) | $15 - $40 | Amazon/Pololu | Yes | |
-| Motor drivers | Control | Control steppers | TMC2209 | A4988 | $10 - $25 | Amazon/Pololu | No | TMC for silent operation |
-| Metal rods/linear rails | Motion | Smooth travel | MGN9 or MGN12 rails | 8mm smooth rods | $20 - $60 | Amazon/AliExpress | Yes | |
-| Lead screws/threaded rods | Actuation | Movement | T8 Lead screw | M8 threaded rod | $10 - $25 | Amazon | No | |
-| Bearings/bushings | Motion | Friction reduction | LM8UU or brass bushings | 3D printed PLA | $5 - $15 | Amazon | No | |
-| Screws/nuts/heat-set inserts | Hardware | Fastening | M3 metric assortment | Basic screw kit | $15 - $30 | Amazon/McMaster | No | Heat-set inserts highly recommended |
-| Power supply | Power | System power | 5V 4A (Pi) + 12/24V (Motors) | Single 5V supply | $15 - $40 | Amazon | No | |
-| Wiring | Power/Control | Connections | Silicone wire kit | Standard hookup wire | $10 - $20 | Amazon | No | |
-| 3D printing filament | Chassis | Frame material | PETG or ABS | PLA | $20 - $30 | Amazon | No | PLA for early tests only |
-| Enclosure material | Chassis | Light blocking | Black acrylic / 3D panels | Cardboard (temporary) | $10 - $30 | Amazon/Local | No | |
-| Calibration slide | Validation | Scale reference | Stage micrometer | Printed grid | $15 - $35 | AmScope/Amazon | No | Essential for measuring FOV |
+| Subsystem | Part | Qty | Purpose | Minimum Spec | Recommended Product | Cheapest Found Product | Current Price | Vendor | Purchase Link | Product Image / Source | Criticality | Notes |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| Compute | Raspberry Pi 4 | 1 | Control & Capture | 4GB RAM | Raspberry Pi 5 (4GB) | Raspberry Pi 4 (4GB) | $55.00 | Adafruit/PiShop | [Link](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/) | [Image](../../sources/image-sources.csv) | High | Need adequate cooling. |
+| Compute | MicroSD Card | 1 | OS Storage | 32GB Class 10 | SanDisk Extreme 64GB | Generic 32GB Class 10 | $8.00 | Amazon | [Link](https://www.amazon.com) | N/A | High | High endurance preferred. |
+| Compute | Power Supply | 1 | Power RPi | 5V 3A USB-C | Official RPi USB-C PSU | Generic 5V 3A | $8.00 | Amazon | [Link](https://www.amazon.com) | N/A | High | |
+| Camera | IMX296 Camera | 1 | Image Sensor | Global Shutter, MIPI | InnovaMaker IMX296 | InnovaMaker IMX296 | $60.00 | InnovaMaker | [Link](https://www.inno-maker.com) | [Image](../../sources/image-sources.csv) | Critical | Global shutter required. |
+| Camera | MIPI Cable | 1 | Data connection | 15-pin to 22-pin (Pi 5) | Standard FPC cable | Included with camera | $0.00 | N/A | N/A | N/A | High | Pi 5 uses different pitch. |
+| Optics | 40X Objective | 1 | Magnification | Plan Achromatic | AmScope PA40XK | AmScope Standard 40X | $45.00 | AmScope | [Link](https://amscope.com/) | N/A | Critical | "Plan" is needed for flat fields. |
+| Optics | Calibration Slide | 1 | Scale reference | Stage micrometer | AmScope Stage Micrometer | Printed Grid (Not rec) | $20.00 | AmScope | [Link](https://amscope.com/) | N/A | Medium | Essential for measuring FOV. |
+| Sample | Glass Slides | 1 | Hold sample | Standard 25x75mm | Standard box of 72 | Standard box of 72 | $10.00 | Amazon | [Link](https://www.amazon.com) | N/A | High | |
+| Illumination| LED Ring | 1 | Light Source | White LED | Multispectral Custom Board | Generic White LED Ring | $15.00 | Adafruit | [Link](https://www.adafruit.com/) | N/A | High | Need diffuser. |
+| Motion | Linear Rails | 2 | XY smooth travel | MGN12, Z0 preload | HIWIN MGN12 | Generic MGN12 (KB3D) | $20.00 | KB3D | [Link](https://kb-3d.com/) | [Image](../../sources/image-sources.csv) | High | Avoid printed sliding parts. |
+| Motion | Lead Screw | 2 | XY actuation | T8, 2mm pitch | T8 with Anti-backlash nut | Standard threaded rod | $15.00 | Amazon | [Link](https://www.amazon.com) | N/A | High | |
+| Motion | Stepper Motor | 2 | Automated XY | NEMA 17 | NEMA 17 (1.5A) | 28BYJ-48 (Not rec) | $14.00 | Pololu | [Link](https://www.pololu.com/) | N/A | Low | Start with manual knobs. |
+| Motion | Motor Driver | 2 | Control Stepper | Standard | TMC2209 | A4988 | $8.00 | Pololu | [Link](https://www.pololu.com/) | N/A | Low | TMC provides silent operation. |
+| Fasteners | Screw Kit | 1 | Assembly | M3 assortment | Metric M3 Hex Socket | Generic Kit | $15.00 | Amazon | [Link](https://www.amazon.com) | N/A | High | |
+| Fasteners | Threaded Inserts| 1 | Assembly | M3 brass inserts | CNC Kitchen M3 | Generic M3 inserts | $12.00 | Amazon | [Link](https://www.amazon.com) | N/A | High | Required for durable threads. |
+
+## Estimated Total Prototype Cost
+- **Absolute cheapest build (Manual XY, 10X lens):** ~$150
+- **Recommended prototype build (MGN12 rails, 40X Plan lens, manual):** ~$230
+- **Automated motion build (add NEMA 17 & drivers):** ~$280

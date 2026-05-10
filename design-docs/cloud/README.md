@@ -1,17 +1,21 @@
 # Cloud Architecture
 
-This document describes the planned cloud architecture for data management, model training, and device fleet management.
+This document describes the cloud infrastructure required to scale data collection, manage a fleet of prototype devices, and orchestrate model training.
 
-*Important Note: This is an engineering prototype system. There are no clinical use claims, and the data handled is for research and development purposes only.*
+*Important Note: This is an engineering prototype system. There are no clinical use claims. The data handled is for research and development purposes only. However, future architectures will need to observe HIPAA guidelines if transitioning to human clinical trials.*
+
+## System Philosophy
+
+- **Local-first system**: The scanner must be capable of completing a scan, running local CV preprocessing, and saving data without an active internet connection. The cloud is an enhancement, not a strict dependency for operation.
+- **Optional cloud sync**: When connected to Wi-Fi, the device can background-upload scan sessions to cloud storage.
 
 ## Key Components
 
-- **Local-first storage**: The Raspberry Pi acts as the primary data store during acquisition. The system must be fully functional offline.
-- **Optional cloud upload**: Devices can be configured to push scan data (raw images, stitched images, metadata) to cloud storage when connected.
-- **Scan dashboard**: A web interface to review uploaded scans, examine image quality, and view AI/CV results.
-- **Training data storage**: A centralized repository for accumulating the datasets described in the pretraining plan.
-- **Experiment tracking**: Logging metrics, hyperparameters, and model checkpoints during AI training.
-- **Model registry**: Version-controlled storage for trained AI models. Devices can pull the latest approved models from this registry.
-- **Device registry**: Tracking the fleet of active prototype scanners, including hardware versions, calibration status, and software versions.
-- **User/project access control**: Managing permissions for researchers and engineers accessing the data and dashboard.
-- **Secure data handling**: Ensuring all data is stored securely and access is auditable, even in a non-clinical research context.
+- **Storage**: Highly scalable object storage for millions of raw TIFF/JPEG images.
+- **Dashboard**: A web portal for engineers and researchers to view uploaded scans, verify image quality, and manage devices.
+- **Training Data Repository**: A centralized, version-controlled repository where data is formatted for PyTorch/Ultralytics consumption.
+- **Experiment Tracking**: A central server logging loss curves, metrics, and configs for every AI training run.
+- **Model Registry**: A version-controlled storage bin for compiled AI models (`.pt`, `.onnx`, or `.tflite`).
+- **Device Registry**: A database tracking every active scanner in the field, its MAC address, current IP, hardware version, and deployed model version.
+- **Access Control**: Role-Based Access Control (RBAC) ensuring only authorized engineers can trigger remote updates or access datasets.
+- **Security**: TLS for all API traffic, signed URLs for direct-to-storage image uploads.

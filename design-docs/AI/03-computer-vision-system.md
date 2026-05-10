@@ -1,57 +1,52 @@
 # Computer Vision System
 
-This document describes the classical Computer Vision (CV) pipeline used for initial object segmentation and pseudo-label generation.
+This document describes the classical Computer Vision (CV) algorithms used for initial object detection, quality control, and pseudo-label generation. These algorithms provide immediate utility without requiring labeled training data.
 
-## Rationale for CV-First Approach
+## Recommended Packages
+- `OpenCV` (`cv2`)
+- `scikit-image` (`skimage`)
+- `NumPy`, `SciPy`, `pandas`
+- `tifffile` / `imageio` (for handling multi-page TIFFs or multispectral stacks)
+- `napari` or `FiftyOne` / `CVAT` / `Label Studio` (for visual review of CV outputs)
 
-- **Why CV is useful before AI**: Classical CV methods (like thresholding and watershed) do not require training data. They provide immediate utility on the first captured images.
-- **How CV can create pseudo-labels**: The outputs of the CV pipeline (masks, bounding boxes) can be used as initial, noisy labels to bootstrap the AI training dataset.
-- **How CV can count objects**: Connected component analysis and contour detection can directly yield counts.
-- **How CV can flag bad images**: Algorithms can detect low variance (blur) or extreme intensity (over/underexposed) to reject bad frames.
-- **How CV and AI can cross-check each other**: Once the AI is trained, comparing the CV count to the AI count provides a valuable quality control metric. Large discrepancies flag the image for human review.
+## Concrete Pipeline Algorithms
 
-## General Pipeline
+### 1. Preprocessing & Enhancement
+- **Flat-field correction**: Corrects for uneven illumination (vignetting) caused by the LED/diffuser setup. `Corrected = (Raw - DarkFrame) / (FlatField - DarkFrame)`.
+- **Dark-frame subtraction**: Removes fixed-pattern sensor noise.
+- **Filtering**: Apply Gaussian, Median, or Bilateral filtering to reduce noise while preserving edges.
+- **Contrast Enhancement**: Use CLAHE (Contrast Limited Adaptive Histogram Equalization) to normalize contrast across different imaging sessions.
 
-1. **Raw image**
-2. -> Flat-field correction
-3. -> Denoise
-4. -> Contrast normalization
-5. -> Thresholding
-6. -> Morphological operations
-7. -> Distance transform
-8. -> Watershed splitting
-9. -> Contour detection
-10. -> Size/circularity filtering
-11. -> Coordinate extraction
-12. -> Mask generation
-13. -> Count calculation
-14. -> Pseudo-label export
+### 2. Segmentation & Detection
+- **Thresholding**: Otsu's method for global thresholding, or Adaptive Thresholding for images with varying background illumination.
+- **Edge Detection**: Canny edge detection (useful for finding sharp boundaries of cells).
+- **Morphological Operations**: Opening (removes small noise) and Closing (fills small holes inside cells).
+- **Instance Separation**: 
+    - Compute the **Distance Transform**.
+    - Apply **Watershed Segmentation** using local maxima as markers to split clumped cells.
+- **Feature Extraction**:
+    - **Connected Components** / **Contour Detection**.
+    - **Blob Detection** (Laplacian of Gaussian - LoG).
+    - *Optional Baseline*: Hough circles (only useful for perfectly spherical, non-clumped RBCs).
 
-## Multispectral Pipeline
+### 3. Filtering & Quality Control
+- **Shape Filtering**: Filter detected contours based on Area, Perimeter, Circularity, Eccentricity, and Aspect Ratio to reject artifacts (dust, scratches).
+- **Focus Metric**: Calculate the Variance of the Laplacian. Images falling below a certain threshold are rejected as "blurry".
+- **Brightness/Saturation Checks**: Reject images that are entirely black (LED failed) or entirely white (overexposed).
 
-1. Same field captured under multiple wavelengths
-2. -> Align images
-3. -> Create wavelength stack
-4. -> Compute per-wavelength contrast features
-5. -> Select best wavelength for segmentation
-6. -> Export masks and labels
+## Multispectral Processing Strategy
+1. **Capture**: The hardware captures the same FOV under different LED wavelengths.
+2. **Registration**: Align the channels to correct for micro-vibrations between captures. Use Phase Correlation for translations, or ECC (Enhanced Correlation Coefficient) alignment.
+3. **Stacking**: Create a multi-channel NumPy array.
+4. **Feature Engineering**: Compute wavelength contrast ratios (e.g., `(Ch1 - Ch2) / (Ch1 + Ch2)`) to highlight specific cell structures that absorb specific wavelengths.
+5. **Selection**: Choose the best wavelength (or computed ratio) to run the segmentation pipeline on for specific object types.
 
-## Pseudo-Label Output
+## Pseudo-Labeling Export
+The CV pipeline acts as the first "annotator". It exports:
+- Bounding boxes in **YOLO format**.
+- Polygons in **COCO format**.
+- Binary **Segmentation Masks**.
+- **CSV** with center coordinates and calculated shape metrics.
+- **Confidence/Quality flags**: E.g., "High Confidence" if the object is perfectly circular and isolated; "Low Confidence" if it was split by the watershed algorithm.
 
-The CV pipeline generates the following outputs formatted for AI training:
-- Bounding boxes (YOLO format)
-- Segmentation masks
-- Center coordinates
-- Class guess if available (based on size/shape heuristics)
-- Confidence score (based on shape clarity)
-- Quality flags
-
-## Human Review Loop
-
-**Important**: CV labels are pseudo-labels, not ground truth.
-
-Human review is needed for:
-- Uncertain cases
-- Dense regions (clumped cells)
-- Artifacts (dust, bubbles)
-- Disagreement between CV and AI outputs
+**Human Review Queue**: Low-confidence CV predictions are pushed to Label Studio/CVAT for human correction before being fed into the AI training loop.

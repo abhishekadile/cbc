@@ -1,0 +1,6 @@
+part_name,source_site,title,URL,license,image_url,suitability,notes
+"OpenFlexure Microscope v7","OpenFlexure/GitLab","Build a Microscope","https://openflexure.org/projects/microscope/build","CERN OHL","","High","Fully 3D printable high-res microscope, good for reference on flexures"
+"UC2 Modular Microscopy","GitHub","UC2-GIT","https://github.com/openUC2/UC2-GIT","CERN OHL","","High","Excellent for modular optical path concepts"
+"Raspberry Pi 4 Case/Mount","Printables","Raspberry Pi 4 snap-fit case","TODO: verify link","CC BY-NC","","Medium","Use as starting point for Pi mount"
+"IMX296 Camera Mount","Thingiverse","Raspberry Pi HQ Camera Mount","TODO: verify link","CC BY","","Medium","May need modification for IMX296 specific board layout"
+"RMS Objective Mount","Thingiverse","RMS objective thread to C-mount","TODO: verify link","CC BY","","High","Good for testing thread tolerances"

@@ -1,53 +1,37 @@
 # Prototype Image Assets
 
-This document manages the visual assets used in the prototype documentation.
+This document manages the visual assets, diagrams, and CAD renders used in the prototype documentation.
 
-## Important Guidelines
+## Image Management Rules
 
-- **Do not commit random copyrighted product images** unless licensing allows it.
-- Prefer self-created diagrams, product links, or images with proper attribution.
-- If using vendor/product images, store the source URL and attribution.
+1. **Do NOT commit copyrighted images directly to the repository** unless the license explicitly allows it (e.g., CC0, CC BY, public domain).
+2. Use web research to find vendor links and use those as references in the documentation (e.g., link to the Amazon product page instead of downloading and committing their photo).
+3. **Prefer self-created diagrams**: Use Mermaid.js within Markdown for system diagrams, flowcharts, and architecture maps. These render natively on GitHub and have zero copyright issues.
+4. **CAD Screenshots**: Screenshots of your own CAD models are encouraged. Use `.png` format.
+5. **Image Inventory**: Every image saved in the repository must be tracked in the `design-docs/sources/image-sources.csv` file.
 
-## Recommended Assets Structure
-- `design-docs/assets/images/hardware/prototype/`
-- `design-docs/assets/diagrams/`
-- `design-docs/assets/stl/`
+## Image Folder Structure
+- `design-docs/assets/images/hardware/prototype/`: Photos of the actual built prototype.
+- `design-docs/assets/images/hardware/production/`: Photos or renders of production hardware.
+- `design-docs/assets/diagrams/`: Non-Mermaid diagrams (e.g., complex SVG optical ray traces).
+- `design-docs/assets/stl-previews/`: Renders or screenshots of individual STL parts.
 
-## Image Inventory
+## File Naming Conventions
+- Use lowercase, hyphen-separated names: `assembled-prototype-v1.png`.
+- Provide descriptive names, not generic ones like `image1.jpg`.
 
-| Image File | Source URL | License/Permission | Used in Doc | Notes |
-| :--- | :--- | :--- | :--- | :--- |
-| `raspberry-pi-placeholder.png` | | | `prototype-product-list.md` | Placeholder for RPi board |
-| `imx296-camera-placeholder.png` | | | `prototype-product-list.md` | Placeholder for IMX296 |
-| `objective-lens-placeholder.png` | | | `prototype-product-list.md` | Placeholder for optics |
-| `xy-stage-concept.png` | | | `prototype-spec.md` | Diagram of motion system |
-| `led-ring-diffuser.png` | | | `prototype-spec.md` | Photo/render of illumination |
-| `prototype-render.png` | | | `README.md` | Overall system CAD render |
-| `wiring-diagram.png` | | | `prototype-assembly-guide.md` | System wiring schematic |
-| `optical-path.png` | | | `prototype-spec.md` | Diagram of light path |
+## Alt Text Conventions
+Always include descriptive alt text for accessibility and context if the image fails to load.
+*Example:* `![CAD render of the 3D printed optical tower showing the IMX296 camera mount](.../optical-tower.png)`
 
-## Placeholders
+## Visual Placeholders
 
-<!-- TODO: Add image: Raspberry Pi mounted inside prototype enclosure -->
-<!-- ![Raspberry Pi](../../../assets/images/hardware/prototype/raspberry-pi-placeholder.png) -->
+If an image is needed but not yet created, use an HTML comment placeholder in the markdown files:
 
-<!-- TODO: Add image: IMX296 Camera module -->
-<!-- ![IMX296 Camera](../../../assets/images/hardware/prototype/imx296-camera-placeholder.png) -->
+<!-- TODO: Add product image: Raspberry Pi 5 board. Source: [URL] -->
+<!-- TODO: Add CAD render: prototype frame v1 -->
+<!-- TODO: Add optical path diagram -->
 
-<!-- TODO: Add image: Microscope objective/lens -->
-<!-- ![Objective Lens](../../../assets/images/hardware/prototype/objective-lens-placeholder.png) -->
-
-<!-- TODO: Add diagram: XY stage concept -->
-<!-- ![XY Stage Concept](../../../assets/diagrams/xy-stage-concept.png) -->
-
-<!-- TODO: Add image: LED ring and diffuser assembly -->
-<!-- ![LED Assembly](../../../assets/images/hardware/prototype/led-ring-diffuser.png) -->
-
-<!-- TODO: Add image: Assembled prototype render from CAD -->
-<!-- ![Prototype Render](../../../assets/images/hardware/prototype/prototype-render.png) -->
-
-<!-- TODO: Add diagram: Wiring diagram connecting RPi, camera, motors, and LEDs -->
-<!-- ![Wiring Diagram](../../../assets/diagrams/wiring-diagram.png) -->
-
-<!-- TODO: Add diagram: Optical path from LED to camera sensor -->
-<!-- ![Optical Path Diagram](../../../assets/diagrams/optical-path.png) -->
+## Adding Vendor Image References
+When referencing a specific part in documentation without committing an image, use markdown links to point the reader to the source:
+`[View Raspberry Pi 4 on official site](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/)`
