@@ -16,9 +16,11 @@ Key commands from the repo root:
 ```powershell
 python -m cad.scripts.tools.build_all_parts
 python -m cad.scripts.tools.build_all_assemblies
-python -m cad.scripts.tools.export_all
+python -m cad.scripts.tools.build_stage1
 python -m pytest cad/tests
 ```
+
+`build_all_parts`, `build_all_assemblies`, and `build_stage1` are safe offline commands. They build deterministic specs/reports and do not create manufacturing STL/STEP files outside Fusion.
 
 Fusion bridge smoke tests assume the existing local MCP/Fusion bridge is active at:
 
@@ -26,18 +28,17 @@ Fusion bridge smoke tests assume the existing local MCP/Fusion bridge is active 
 http://127.0.0.1:8765
 ```
 
-Generated naming follows:
+Stage 1 generated naming follows:
 
-- Native: `cbc_x_carriage_r001.f3d`
-- STEP: `cbc_x_carriage_r001.step`
-- STL: `cbc_x_carriage_r001.stl`
-- Assemblies: `cbc_prototype_manual_r001.*`, `cbc_prototype_stepper_r001.*`
+- Native assembly: `cbc_stage1_static_optical_stack_r001.f3d`
+- STEP part: `cbc_slide_holder_r001.step`
+- STL part: `cbc_slide_holder_r001.stl`
 
 ## Real Fusion Exports vs Offline Specs
 
 Only files generated inside Autodesk Fusion through `ExportManager` should be treated as printable/manufacturing CAD.
 
-Offline Python runs may write deterministic `.non_printable_spec.json` or explicitly marked placeholder files for validation and CI. Those files are not STL/STEP manufacturing outputs.
+Offline Python runs may write deterministic `.non_printable_spec.json` files for validation and CI. Those files are not STL/STEP manufacturing outputs.
 
 The first real printable Fusion part implemented is:
 
@@ -51,3 +52,11 @@ Run that command from Fusion's Python environment, or run the script through Fus
 - `cad/exports/step/cbc_slide_holder_r001.step`
 
 When run outside Fusion, the same command writes only a non-printable JSON spec and does not claim to create printable CAD.
+
+For the full Stage 1 export set, run this from Fusion's Python environment:
+
+```powershell
+python -m cad.scripts.tools.export_stage1
+```
+
+Outside Fusion, `export_stage1` and `export_all` refuse with a `RuntimeError` and do not write placeholder manufacturing files.

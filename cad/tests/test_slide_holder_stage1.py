@@ -3,7 +3,10 @@ from cad.scripts.parts.cbc_slide_holder import build
 
 
 def test_slide_holder_pocket_uses_locked_slide_clearances():
-    model = build(load_all())
+    data = load_all()
+    assert data["locked_dimensions"]["slide"]["pocket_x_mm"] == 76.0
+    assert data["locked_dimensions"]["slide"]["pocket_y_mm"] == 25.6
+    model = build(data)
     pocket = model.metadata["calculated_slide_pocket_mm"]
     assert pocket["x"] == 76.0
     assert pocket["y"] == 25.6

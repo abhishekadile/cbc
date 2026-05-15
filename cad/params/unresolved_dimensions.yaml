@@ -20,6 +20,31 @@ unresolved_dimensions:
     amscope_40x_objective_shoulder_geometry_mm: null
     objective_parfocal_distance_mm: null
     note: "Stage 1 uses datum placeholders only; measure camera sensor plane and objective shoulder before final optical tube/holder"
+  pi4_connector_keepouts:
+    usb_ethernet_zone_mm: null
+    usb_c_power_zone_mm: null
+    hdmi_zone_mm: null
+    gpio_header_zone_mm: null
+    note: "Verify connector keepout zones against the specific Raspberry Pi 4 revision before final enclosure design"
+  pico_mount:
+    mount_hole_span_x_mm: null
+    mount_hole_span_y_mm: null
+    mount_hole_dia_mm: null
+    note: "Do not freeze Raspberry Pi Pico mounting holes until a product mechanical drawing or caliper measurements are reviewed"
+  tlc5947_mount:
+    mount_hole_span_x_mm: null
+    mount_hole_span_y_mm: null
+    mount_hole_dia_mm: null
+    note: "Keep TLC5947 hole spacing unresolved until Adafruit board files, a mechanical drawing, or measurements are reviewed"
+  permaproto_quarter:
+    second_axis_mount_span_mm: null
+    orientation_on_tray: null
+    note: "Stage 1 treats the Perma-Proto Quarter as a two-hole board; verify BOM product ID and tray orientation before final retention geometry"
+  nema17_pololu_2267:
+    shaft_length_mm: null
+    pilot_boss_d_mm: null
+    pilot_boss_height_mm: null
+    note: "Verify shaft length and pilot boss geometry from the Pololu drawing before motor-coupler or face-register geometry"
   rail_system:
     selected_family: null
     rail_width_mm: 12.0
