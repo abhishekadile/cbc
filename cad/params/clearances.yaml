@@ -1,0 +1,16 @@
+clearances:
+  printed_peg_to_hole_diametral_mm:
+    min: 0.2
+    max: 0.4
+  m3_clearance_hole_mm:
+    snug: 3.2
+    easy: 3.4
+  m3_insert_pilot_mm: 4.0
+  m2p5_printed_clearance_hole_mm: 2.75
+  pcb_side_clearance_mm: 0.5
+  pcb_wall_keepout_z_mm: 1.0
+  vendor_uncertain_slot_adjustment_mm: 1.0
+  slide_side_clearance_mm: 0.3
+  slide_end_clearance_mm: 0.5
+  slide_thickness_allowance_min_mm: 1.2
+  slide_thickness_allowance_max_mm: 1.5

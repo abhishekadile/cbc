@@ -1,0 +1,4 @@
+CBC CAD STEP placeholder generated from deterministic script spec.
+name=cbc_camera_mount_imx296_r001
+bbox_mm=(60.0, 60.0, 8.0)
+material_tag=matte_black_petg_optics_adjacent

@@ -1,0 +1,52 @@
+prototype_v1:
+  revision: r001
+  material_tags:
+    optics_adjacent: matte_black_petg
+    motion_structural: petg
+    electronics_mounts: petg_or_pla
+    coupons: target_material_required
+  layout:
+    baseplate_x_mm: 190.0
+    baseplate_y_mm: 180.0
+    baseplate_z_mm: 8.0
+    optical_axis_x_mm: 0.0
+    optical_axis_y_mm: 20.0
+    tower_height_mm: 220.0
+    tower_offset_y_mm: 65.0
+    rail_support_height_mm: 16.0
+    carriage_plate_z_mm: 6.0
+    electronics_deck_x_mm: 92.0
+    electronics_deck_y_mm: 72.0
+  optics:
+    objective_holder_outer_d_mm: 34.0
+    objective_holder_height_mm: 18.0
+    optical_tube_outer_d_mm: 38.0
+    optical_tube_wall_mm: 3.0
+    camera_mount_face_to_sensor_plane_mm: 5.0
+    led_ring_outer_d_mm: 70.0
+    led_ring_inner_d_mm: 32.0
+    led_count: 16
+    diffuser_frame_x_mm: 72.0
+    diffuser_frame_y_mm: 72.0
+    diffuser_window_d_mm: 42.0
+  motion:
+    nominal_travel_x_mm: 70.0
+    nominal_travel_y_mm: 35.0
+    rail_support_x_mm: 88.0
+    rail_support_y_mm: 18.0
+    rail_support_z_mm: 16.0
+    x_carriage_x_mm: 86.0
+    x_carriage_y_mm: 54.0
+    y_carriage_x_mm: 92.0
+    y_carriage_y_mm: 42.0
+    lead_nut_carrier_x_mm: 34.0
+    lead_nut_carrier_y_mm: 24.0
+    lead_nut_carrier_z_mm: 16.0
+    manual_knob_d_mm: 34.0
+    manual_knob_z_mm: 14.0
+  electronics:
+    standoff_height_mm: 6.0
+    tray_wall_mm: 2.0
+    tray_floor_mm: 2.5
+  exports:
+    part_revision: r001

@@ -1,0 +1,4 @@
+CBC CAD STL placeholder generated from deterministic script spec.
+name=cbc_m3_insert_coupon_r001
+bbox_mm=(45.0, 18.0, 8.0)
+material_tag=coupon_target_material

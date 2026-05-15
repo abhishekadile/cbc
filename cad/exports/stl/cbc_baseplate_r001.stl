@@ -1,0 +1,4 @@
+CBC CAD STL placeholder generated from deterministic script spec.
+name=cbc_baseplate_r001
+bbox_mm=(190.0, 180.0, 8.0)
+material_tag=petg_structural_motion

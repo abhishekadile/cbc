@@ -1,0 +1,4 @@
+CBC CAD STEP placeholder generated from deterministic script spec.
+name=cbc_prototype_stepper_r001
+bbox_mm=(190.0, 180.0, 245.0)
+material_tag=assembly_reference

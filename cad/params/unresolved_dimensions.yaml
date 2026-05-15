@@ -1,0 +1,37 @@
+unresolved_dimensions:
+  camera_innomaker_imx296:
+    board_x_mm: null
+    board_y_mm: null
+    board_z_mm: null
+    mount_hole_dia_mm: null
+    mount_hole_span_x_mm: null
+    mount_hole_span_y_mm: null
+    sensor_plane_offset_from_mount_face_mm: null
+    note: "Measure actual InnovaMaker board before freezing bracket"
+  objective_amscope_40x:
+    shoulder_d_mm: null
+    body_outer_d_mm: null
+    body_length_mm: null
+    thread_print_offset_mm: 0.0
+    note: "Lock by caliper or vendor drawing"
+  rail_system:
+    selected_family: null
+    rail_width_mm: 12.0
+    rail_length_x_mm: 200.0
+    rail_length_y_mm: 200.0
+    rail_hole_pitch_mm: null
+    rail_hole_dia_mm: null
+    carriage_hole_span_x_mm: null
+    carriage_hole_span_y_mm: null
+    carriage_hole_thread_mm: null
+  lead_screw:
+    nominal_family: T8
+    screw_length_x_mm: 400.0
+    screw_length_y_mm: 400.0
+    screw_lead_mm_per_rev: null
+    nut_body_x_mm: null
+    nut_body_y_mm: null
+    nut_body_z_mm: null
+    nut_mount_hole_span_x_mm: null
+    nut_mount_hole_span_y_mm: null
+    nut_mount_hole_dia_mm: null
