@@ -14,6 +14,12 @@ unresolved_dimensions:
     body_length_mm: null
     thread_print_offset_mm: 0.0
     note: "Lock by caliper or vendor drawing"
+  stage1_optical_stack:
+    imx296_sensor_plane_offset_from_mount_face_mm: null
+    rpi_gs_sensor_plane_offset_from_mount_face_mm: null
+    amscope_40x_objective_shoulder_geometry_mm: null
+    objective_parfocal_distance_mm: null
+    note: "Stage 1 uses datum placeholders only; measure camera sensor plane and objective shoulder before final optical tube/holder"
   rail_system:
     selected_family: null
     rail_width_mm: 12.0

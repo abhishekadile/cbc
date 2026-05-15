@@ -17,6 +17,18 @@ prototype_v1:
     carriage_plate_z_mm: 6.0
     electronics_deck_x_mm: 92.0
     electronics_deck_y_mm: 72.0
+  stage1:
+    revision: r001
+    optical_axis_x_mm: 0.0
+    optical_axis_y_mm: 12.0
+    slide_holder_mount_span_x_mm: 88.0
+    slide_holder_mount_span_y_mm: 38.0
+    tower_mount_span_x_mm: 48.0
+    tower_mount_span_y_mm: 24.0
+    pi_mount_center_x_mm: 42.0
+    pi_mount_center_y_mm: -42.0
+    camera_plate_z_mm: 4.0
+    objective_holder_height_mm: 18.0
   optics:
     objective_holder_outer_d_mm: 34.0
     objective_holder_height_mm: 18.0

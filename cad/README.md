@@ -33,4 +33,21 @@ Generated naming follows:
 - STL: `cbc_x_carriage_r001.stl`
 - Assemblies: `cbc_prototype_manual_r001.*`, `cbc_prototype_stepper_r001.*`
 
-The offline exports are deterministic script-spec placeholders when Autodesk Fusion is not executing the scripts. The same scripts are organized around Fusion concepts: sketches, extrudes, holes, slots, bought-part envelopes, and ExportManager-compatible export boundaries.
+## Real Fusion Exports vs Offline Specs
+
+Only files generated inside Autodesk Fusion through `ExportManager` should be treated as printable/manufacturing CAD.
+
+Offline Python runs may write deterministic `.non_printable_spec.json` or explicitly marked placeholder files for validation and CI. Those files are not STL/STEP manufacturing outputs.
+
+The first real printable Fusion part implemented is:
+
+```powershell
+python -m cad.scripts.parts.cbc_slide_holder
+```
+
+Run that command from Fusion's Python environment, or run the script through Fusion's Scripts and Add-Ins workflow. When Fusion is live, it creates a separate component/body named `cbc_slide_holder_r001` and exports:
+
+- `cad/exports/stl/cbc_slide_holder_r001.stl`
+- `cad/exports/step/cbc_slide_holder_r001.step`
+
+When run outside Fusion, the same command writes only a non-printable JSON spec and does not claim to create printable CAD.

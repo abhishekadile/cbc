@@ -45,6 +45,7 @@ class FusionDesignContext:
 
     def __init__(self, design_name: str):
         self.design_name = design_name
+        self.component_occurrences: dict[str, Any] = {}
         try:
             import adsk.core  # type: ignore
             import adsk.fusion  # type: ignore
@@ -53,6 +54,9 @@ class FusionDesignContext:
             self.adsk_fusion = adsk.fusion
             self.app = adsk.core.Application.get()
             self.design = adsk.fusion.Design.cast(self.app.activeProduct)
+            if self.design is None:
+                self.app.documents.add(adsk.core.DocumentTypes.FusionDesignDocumentType)
+                self.design = adsk.fusion.Design.cast(self.app.activeProduct)
         except Exception:
             self.adsk_core = None
             self.adsk_fusion = None
@@ -77,3 +81,50 @@ def write_spec(model: PartModel, path: Path) -> None:
 
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(model.to_dict(), indent=2), encoding="utf-8")
+
+
+def mm_to_cm(value_mm: float) -> float:
+    return float(value_mm) / 10.0
+
+
+def value_cm(ctx: FusionDesignContext, value_mm: float):
+    return ctx.adsk_core.ValueInput.createByReal(mm_to_cm(value_mm))
+
+
+def new_component(ctx: FusionDesignContext, name: str):
+    if not ctx.is_live_fusion:
+        raise RuntimeError("Fusion API is required to create CAD components")
+    matrix = ctx.adsk_core.Matrix3D.create()
+    try:
+        occurrence = ctx.design.rootComponent.occurrences.addNewComponent(matrix)
+        component = occurrence.component
+        component.name = name
+        ctx.component_occurrences[name] = occurrence
+    except RuntimeError:
+        component = ctx.design.rootComponent
+        try:
+            component.name = name
+        except Exception:
+            pass
+    return component
+
+
+def move_component(ctx: FusionDesignContext, name: str, x_mm: float, y_mm: float, z_mm: float = 0.0) -> None:
+    occurrence = ctx.component_occurrences.get(name)
+    if occurrence is None:
+        return
+    matrix = ctx.adsk_core.Matrix3D.create()
+    matrix.translation = ctx.adsk_core.Vector3D.create(mm_to_cm(x_mm), mm_to_cm(y_mm), mm_to_cm(z_mm))
+    occurrence.transform = matrix
+
+
+def add_user_parameter(ctx: FusionDesignContext, name: str, value_mm: float, comment: str = "") -> None:
+    if not ctx.is_live_fusion:
+        return
+    params = ctx.design.userParameters
+    existing = params.itemByName(name)
+    if existing:
+        existing.expression = f"{value_mm} mm"
+        existing.comment = comment
+        return
+    params.add(name, ctx.adsk_core.ValueInput.createByString(f"{value_mm} mm"), "mm", comment)

@@ -3,30 +3,50 @@ locked_dimensions:
     max_footprint_x_mm: 200.0
     max_footprint_y_mm: 200.0
     max_height_mm: 300.0
+    stage1_baseplate_x_mm: 180.0
+    stage1_baseplate_y_mm: 160.0
+    stage1_baseplate_z_mm: 6.0
+    stage1_baseplate_corner_radius_mm: 8.0
+    rubber_foot_offset_from_corner_mm: 12.0
   optics:
     objective_nominal_mag: 40.0
     objective_mount_standard: RMS
     objective_rms_major_diameter_in: 0.8
     objective_rms_tpi: 36
     objective_shoulder_to_sensor_plane_mm: 160.0
+    stage1_placeholder_objective_outer_d_mm: 25.0
+    stage1_placeholder_holder_bore_mm: 26.0
+    stage1_placeholder_holder_wall_mm: 4.0
   slide:
     slide_x_mm: 75.0
     slide_y_mm: 25.0
+    pocket_x_mm: 75.5
+    pocket_y_mm: 25.6
+    viewing_window_x_mm: 22.0
+    viewing_window_y_mm: 12.0
+    holder_z_mm: 3.0
   camera_rpi_gs:
     sensor_resolution_x_px: 1456
     sensor_resolution_y_px: 1088
     pixel_pitch_um: 3.45
     board_x_mm: 38.0
     board_y_mm: 38.0
+    board_nest_x_mm: 38.5
+    board_nest_y_mm: 38.5
     mount_hole_dia_mm: 2.5
     mount_hole_span_x_mm: 30.0
     mount_hole_span_y_mm: 30.0
   pi4:
     board_x_mm: 85.0
     board_y_mm: 56.0
+    board_nest_x_mm: 85.5
+    board_nest_y_mm: 56.5
     mount_hole_span_x_mm: 58.0
     mount_hole_span_y_mm: 49.0
     mount_hole_dia_mm: 2.7
+    standoff_boss_outer_d_mm: 7.0
+    standoff_boss_height_mm: 5.0
+    standoff_hole_d_mm: 2.8
   pico:
     board_x_mm: 51.3
     board_y_mm: 21.0

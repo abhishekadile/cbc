@@ -3,8 +3,6 @@ from __future__ import annotations
 import importlib
 from pathlib import Path
 
-from cad.scripts.common.exports import export_model
-from cad.scripts.common.naming import filename
 from cad.scripts.common.params import load_all
 from cad.scripts.parts import PART_STEMS
 
@@ -18,7 +16,6 @@ def build_all_parts():
     for stem in PART_STEMS:
         module = importlib.import_module(f"cad.scripts.parts.{stem}")
         model = module.build(data)
-        export_model(model, CAD_ROOT / "f3d" / "parts" / filename(stem, "f3d"))
         built.append(model)
     return built
 
